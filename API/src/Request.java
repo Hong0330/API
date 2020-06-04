@@ -16,7 +16,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Request extends Thread{
 	
-	String API_key = "RGAPI-15a6aa5d-24e6-46b9-9644-c721249c1baa";
+	String API_key = "RGAPI-64f64d58-2d88-4e2e-b206-d2de03d20ad7";
     String URL_01 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
     String URL_02 = "https://kr.api.riotgames.com/tft/league/v1/entries/by-summoner/";
     String URL_03 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
@@ -369,6 +369,7 @@ public class Request extends Thread{
     			
     			String nameString = (String) objectTmp.get("name");
     			int num_units = ((Long)objectTmp.get("num_units")).intValue();
+    			int style = ((Long)objectTmp.get("style")).intValue();
     			int tier_current = ((Long)objectTmp.get("tier_current")).intValue();
     			if(objectTmp.get("tier_total") != null) {
     				int tier_total = ((Long)objectTmp.get("tier_total")).intValue();
@@ -377,6 +378,7 @@ public class Request extends Thread{
     			
     			t.setName(nameString);
     			t.setNum_units(num_units);
+    			t.setStyle(style);
     			t.setTier_current(tier_current);
     			
     			traits.add(t);

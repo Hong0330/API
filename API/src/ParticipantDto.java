@@ -3,16 +3,16 @@ import java.util.List;
 
 public class ParticipantDto {
 	private CompanionDto companion;
-    private int gold_left;
-    private int last_round;
-    private int level;
-    private int placement;
+    private int gold_left;				//남은 골드
+    private int last_round;				//마지막까지 살아남은 라운드
+    private int level;					//레벨 
+    private int placement;			
     private int players_eliminated;
-    private String puuid;
-    private float time_eliminated;
-    private int total_damage_to_players;
-    private ArrayList<TraitDto> traits = new ArrayList<TraitDto>();
-    private ArrayList<UnitDto> units = new ArrayList<UnitDto>();
+    private String puuid;	
+    private float time_eliminated;		//생존 시간
+    private int total_damage_to_players;//참여자들에게 공격한 데미지 량
+    private ArrayList<TraitDto> traits = new ArrayList<TraitDto>();	//시너지
+    private ArrayList<UnitDto> units = new ArrayList<UnitDto>();	//유닛
 
     //생성자
     public ParticipantDto() {

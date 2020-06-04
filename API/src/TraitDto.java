@@ -1,9 +1,10 @@
 
 public class TraitDto {
-	private String name;
-    private int num_units;
-    private int tier_current;
-    private int tier_total;
+	private String name;		//유닛 이름
+    private int num_units;		//시너지를 받고있는 유닛들 수 
+    private int style; 			//시너지 단계에 따른 이미지 스타일
+    private int tier_current;	//시너지 상태 (0은 받고있지 않음, 1이상부터 효과)
+    private int tier_total;		//해당 시너지의 총 단계 수 
 
     //생성자
     public TraitDto() {
@@ -27,6 +28,14 @@ public class TraitDto {
         this.name = name;
     }
 
+    public int getStyle() {
+        return style;
+    }
+
+    public void setStyle(int style) {
+        this.style = style;
+    }
+    
     public int getNum_units() {
         return num_units;
     }

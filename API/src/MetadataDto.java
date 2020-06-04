@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class MetadataDto {
 	private String data_version;
     private String match_id;
-    private ArrayList<String> participants = new ArrayList<String>();
+    private ArrayList<String> participants = new ArrayList<String>();	//참여자들의 puuid, 이 리스트를 활용하여 API_05를 호출하여 닉네임을 찾음
 
     //생성자
     public MetadataDto() {

@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnitDto {
-	private ArrayList<Integer> items = new ArrayList<Integer>();
-    private String character_id;
-    private String name;
-    private int rarity;
-    private int tier;
+	private ArrayList<Integer> items = new ArrayList<Integer>(); // À¯´ÖÀÌ °¡Áö°íÀÖ´Â ¾ÆÀÌÅÛÀÇ id
+    private String character_id;	//À¯´ÖÀÇ ÀÌ¸§
+    private String name;			
+    private int rarity;				//À¯´ÖÀÇ °ñµå(0->1°ñµå À¯´Ö,1->2°ñµå )
+    private int tier;				//À¯´ÖÀÇ º° °¹¼ö
 
     //»ý¼ºÀÚ
     public UnitDto() {

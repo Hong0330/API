@@ -2,12 +2,12 @@
 public class SummonerDTO {
 	//필드
     private String accountId;
-    private int profileIconId;
+    private int profileIconId;	//프로필 아이콘 아이디
     private long revisionDate;
-    private String name;
-    private String id;
-    private String puuid;
-    private long summonerLevel;
+    private String name;		//소환사 닉네임
+    private String id;			//티어 검색에 쓰이는 id
+    private String puuid;		//매치리스트 검색에 쓰이는 puuid
+    private long summonerLevel;	//소환사 레벨
 
     //생성자
     public SummonerDTO() {

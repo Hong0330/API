@@ -2,13 +2,13 @@
 public class LeagueEntryDTO {
 	private String leagueId;
     private String queueType;
-    private String tier;
-    private String rank;
+    private String tier;			//티어 정보 (예 : 로마자 1, 2, 3, 4)
+    private String rank;			//랭크 정보 (예 : 브론즈, 실버, 골드)
     private String summonerId;
-    private String summonerName;
-    private int leaguePoints;
-    private int wins;
-    private int losses;
+    private String summonerName;	//소환사 닉네임
+    private int leaguePoints;		//리그포인트
+    private int wins;				//1등 횟수 
+    private int losses;				//2등 이하 횟수
     private boolean veteran;
     private boolean inactive;
     private boolean freshBlood;

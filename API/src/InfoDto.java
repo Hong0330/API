@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class InfoDto {
 	private long game_datetime;
-    private float game_length;
-    private String game_variation;
+    private float game_length;		//게임 진행 시간
+    private String game_variation;	//은하계 구성 (예 : 보물창고 , 니코의 세계)
     private String game_version;
-    private ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>();
+    private ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>();	//참여자 정보 
     private int queue_id;
     private int tft_set_number;
 
