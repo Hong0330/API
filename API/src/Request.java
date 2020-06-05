@@ -16,7 +16,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Request extends Thread{
 	
-	String API_key = "RGAPI-64f64d58-2d88-4e2e-b206-d2de03d20ad7";
+	String API_key = "RGAPI-d7870f91-a53b-4036-adcd-f63dc250c523";
     String URL_01 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
     String URL_02 = "https://kr.api.riotgames.com/tft/league/v1/entries/by-summoner/";
     String URL_03 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
