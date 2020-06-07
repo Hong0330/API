@@ -12,11 +12,13 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.net.ssl.HttpsURLConnection;
 
 public class Request extends Thread{
 	
-	String API_key = "RGAPI-d7870f91-a53b-4036-adcd-f63dc250c523";
+	String API_key = "RGAPI-34c7bcbe-ca5d-44f1-a076-9b5538cd40da";
     String URL_01 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/";
     String URL_02 = "https://kr.api.riotgames.com/tft/league/v1/entries/by-summoner/";
     String URL_03 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/";
@@ -26,6 +28,7 @@ public class Request extends Thread{
     SummonerDTO summonerDTO = new SummonerDTO();//소환사 정보
     LeagueEntryDTO leagueEntryDTO = new LeagueEntryDTO();//티어 정보
     
+    ArrayList<JSONObject> matchObject = new ArrayList<JSONObject>();
     ArrayList<MatchDto> matchDto = new ArrayList<MatchDto>();// 매치 세부 정보
     ArrayList<String> matchList = new ArrayList<String>();	//매치 리스트
     
@@ -184,6 +187,8 @@ public class Request extends Thread{
                 String receiveMsg = buffer.toString();
                 JSONParser jsonParser = new JSONParser();
                 JSONObject jsonObject = (JSONObject)jsonParser.parse(receiveMsg);
+                
+                matchObject.add(jsonObject);
                 
                 setMatch(jsonObject);
                 System.out.println("match : " + matchDto.get(matchDto.size()-1).getMetadata().getMatch_id());
@@ -393,13 +398,34 @@ public class Request extends Thread{
     			
     			JSONObject objectTmp = unitsTmp.get(k);
     			
-    			ArrayList<Integer> items = (ArrayList<Integer>) objectTmp.get("items");
+    			//ArrayList<Integer> items = (ArrayList<Integer>) objectTmp.get("items"); 
+    			JSONArray array = (JSONArray) objectTmp.get("items");
+    			int[] items = new int[3];
+    			System.out.println(array.size());
+    			switch(array.size()) {
+    			case 0:
+    				break;
+    			case 1:
+    				items[0] = ((Long)array.get(0)).intValue();
+    				break;
+    			case 2:
+    				items[0] = ((Long)array.get(0)).intValue();
+        			items[1] = ((Long)array.get(1)).intValue();
+    				break;
+    			case 3:
+    				items[0] = ((Long)array.get(0)).intValue();
+        			items[1] = ((Long)array.get(1)).intValue();
+        			items[2] = ((Long)array.get(2)).intValue();
+    				break;
+    			}
+    			
     			String character_id = (String) objectTmp.get("character_id");
     			String name = (String) objectTmp.get("name");
     			int rarity = ((Long)objectTmp.get("rarity")).intValue();
     			int tier = ((Long)objectTmp.get("tier")).intValue();
     			
     			u.setCharacter_id(character_id);
+    			//u.setItems(items);
     			u.setItems(items);
     			u.setName(name);
     			u.setRarity(rarity);
@@ -445,6 +471,7 @@ public class Request extends Thread{
     	summonerDTO = new SummonerDTO();//소환사 정보
         leagueEntryDTO = new LeagueEntryDTO();//티어 정보
         
+        matchObject = new ArrayList<JSONObject>();
         matchDto = new ArrayList<MatchDto>();// 매치 세부 정보
         matchList = new ArrayList<String>();	//매치 리스트
         
