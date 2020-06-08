@@ -17,6 +17,11 @@ public class sql {
 	String user_info = "insert into user_info(match_id, user_name, gold_left, last_round, level, player_eliminated) values(?, ?, ?, ?, ?, ?)";
 	String trait_info = "insert into trait_info(match_id, user_name, trait_no, trait_name, num_units, tier_current) values(?, ?, ?, ?, ?, ?)";
 	String unit_info = "insert into unit_info(match_id, user_name, unit_no, character_id, tier, item_1, item_2, item_3) values(?, ?, ?, ?, ?, ?, ?, ?)";
+	String selectSummoner = "select * from summoner_info where ID=?";
+	String selectMatch = "select * from match_info where TFT_name=? and match_id=?";
+	String selectUser = "select * from user_info where match_id=? and user_name=?";
+	String selectTrait = "select * from trait_info where match_id=? and user_name=? and trait_no=?";
+	String selectUnit = "select * from unit_info where match_id=? and user_name=? and unit_no=?";
 	
 	public void connect() {
 		//目池记 积己
@@ -112,6 +117,164 @@ public class sql {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public String selectSummoner_info(String id, String pw) {
+		try {
+			String tmp_id = null;
+			String tmp_pw = null;
+			
+			pstatement = con.prepareStatement(selectSummoner);
+			pstatement.setString(1, id); 	
+			
+			ResultSet rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				tmp_id = rs.getString("ID");
+				tmp_pw = rs.getString("password");
+			}
+			
+			if(tmp_id.equals(id) && tmp_pw.equals(pw)) {
+				rs.close();
+				return id;
+			}
+			else {
+				rs.close();
+				return "LOGINFAIL"; 
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "LOGINFAIL";
+		}
+	}
+	
+	public String selectMatch_info(String name, String match_id) {
+		try {
+			String tmp_match_id = null;
+			float tmp_game_length = 0;
+			String tmp_game_variation = null;
+			
+			pstatement = con.prepareStatement(selectMatch);
+			pstatement.setString(1, name);
+			pstatement.setString(2, match_id);
+			
+			ResultSet rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				tmp_match_id = rs.getString("match_id");
+				tmp_game_length = rs.getFloat("game_length");
+				tmp_game_variation = rs.getString("game_variation");
+			}
+			System.out.println("match_id : " + tmp_match_id + " game_length : " + tmp_game_length + " game_variation : " + tmp_game_variation);
+			return "己傍";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "MATCHFAIL";
+		}
+	}
+	
+	public String selectUser_info(String match_id, String user_name) {
+		try {
+			String tmp_match_id = null;
+			String tmp_user_name = null;
+			int tmp_gold_left = 0;
+			int tmp_last_round = 0;
+			int tmp_level = 0;
+			int tmp_player_eliminated = 0;
+			
+			pstatement = con.prepareStatement(selectUser);
+			pstatement.setString(1, match_id);
+			pstatement.setString(2, user_name);
+			
+			ResultSet rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				tmp_match_id = rs.getString("match_id");
+				tmp_user_name = rs.getString("user_name");
+				tmp_gold_left = rs.getInt("gold_left");
+				tmp_last_round = rs.getInt("last_round");
+				tmp_level = rs.getInt("level");
+				tmp_player_eliminated = rs.getInt("player_eliminated");
+			}
+			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " gold_left : " + tmp_gold_left + " last_round : " + tmp_last_round + " level : " + tmp_level + " player_eliminated : " + tmp_player_eliminated );
+			return "己傍";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "USERFAIL";
+		}
+	}
+	
+	public String selectTrait_info(String match_id, String user_name, int trait_no) {
+		try {
+			String tmp_match_id = null;
+			String tmp_user_name = null;
+			int tmp_trait_no = 0;
+			String tmp_trait_name = null;
+			int tmp_num_units = 0;
+			int tmp_tier_current = 0;
+			
+			pstatement = con.prepareStatement(selectTrait);
+			pstatement.setString(1, match_id);
+			pstatement.setString(2, user_name);
+			pstatement.setInt(3, trait_no);
+			
+			ResultSet rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				tmp_match_id = rs.getString("match_id");
+				tmp_user_name = rs.getString("user_name");
+				tmp_trait_no = rs.getInt("trait_no");
+				tmp_trait_name = rs.getString("trait_name");
+				tmp_num_units = rs.getInt("num_units");
+				tmp_tier_current = rs.getInt("tier_current");
+			}
+			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " trait_no : " + tmp_trait_no + " trait_name : " + tmp_trait_name + " num_units : " + tmp_num_units + " tier_current : " + tmp_tier_current );
+			return "己傍";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "USERFAIL";
+		}
+	}
+	
+	public String selectUnit_info(String match_id, String user_name, int unit_no) {
+		try {
+			String tmp_match_id = null;
+			String tmp_user_name = null;
+			int tmp_unit_no = 0;
+			String tmp_character_id = null;
+			int tmp_tier = 0;
+			int tmp_item_1 = 0;
+			int tmp_item_2 = 0;
+			int tmp_item_3 = 0;
+			
+			pstatement = con.prepareStatement(selectUnit);
+			pstatement.setString(1, match_id);
+			pstatement.setString(2, user_name);
+			pstatement.setInt(3, unit_no);
+			
+			ResultSet rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				tmp_match_id = rs.getString("match_id");
+				tmp_user_name = rs.getString("user_name");
+				tmp_unit_no = rs.getInt("unit_no");
+				tmp_character_id = rs.getString("character_id");
+				tmp_tier = rs.getInt("tier");
+				tmp_item_1 = rs.getInt("item_1");
+				tmp_item_2 = rs.getInt("item_2");
+				tmp_item_3 = rs.getInt("item_3");
+			}
+			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " unit_no : " + tmp_unit_no + " character_id : " + tmp_character_id + " tier : " + tmp_tier + " item_1 : " + tmp_item_1 + " item_2 : " + tmp_item_2 + " item_3 : " + tmp_item_3);
+			return "己傍";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "USERFAIL";
 		}
 	}
 	

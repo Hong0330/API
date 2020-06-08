@@ -14,18 +14,32 @@ public class main {
 			
 			sql.connect();
 			
+			String test = sql.selectSummoner_info("test", "test");
+			System.out.println(test);
+			test = sql.selectMatch_info("test", "test");
+			System.out.println(test);
+			test = sql.selectUser_info("test", "test");
+			System.out.println(test);
+			test = sql.selectTrait_info("test", "test", 0);
+			System.out.println(test);
+			for(int q = 0 ; q < 4 ; q++) {
+				test = sql.selectUnit_info("test", "test", q);
+				System.out.println(test);
+			}
+			
+			
 			
 			
 			if(r.callSummonerDTO("롤처음하는휴먼")) {
 				if(r.callLeagueEntryDTO(r.summonerDTO.getId())) {
 					if(r.callMatchList(r.summonerDTO.getPuuid())) {
+						
 						for(int i = 0 ; i < r.matchDto.size(); i++) {
 							System.out.println("i : " + i + " Set Number : "+ r.matchDto.get(i).getInfo().getGame_variation());
 						}
 						
-						
+						/*
 						sql.insertSummoner_info("test", "test", r.summonerDTO.getName());
-						
 						//i = 매치번호인덱스, j = 유저인덱스
 						for(int i = 0; i < r.matchList.size() ; i++) {
 							sql.insertMatch_info(r.summonerDTO.getName(), r.matchList.get(i), r.matchDto.get(i).getInfo().getGame_length(), r.matchDto.get(i).getInfo().getGame_variation());
@@ -66,16 +80,7 @@ public class main {
 									//r.matchDto.get(i).getInfo().getParticipants().get(j).getUnits().get(l)
 								}
 							}
-							/*
-							sql.insert_matchlist(r.summonerDTO.getName(), r.matchList.get(i));
-							sql.insert_match(r.summonerDTO.getName(),r.matchList.get(i), r.matchObject.get(i));
-							for(int j = 0 ;j < r.participantList.get(i).size() + 1 ; j++) {
-								sql.insert_userlist(r.matchList.get(i), r.participantList.get(i).get(j));
-							}
 							*/
-						}
-						
-						
 					}
 				}
 			}
