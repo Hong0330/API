@@ -2,13 +2,13 @@
 public class LeagueEntryDTO {
 	private String leagueId;
     private String queueType;
-    private String tier;			//Æ¼¾î Á¤º¸ (¿¹ : ·Î¸¶ÀÚ 1, 2, 3, 4)
-    private String rank;			//·©Å© Á¤º¸ (¿¹ : ºê·ĞÁî, ½Ç¹ö, °ñµå)
+    private String tier;			//í‹°ì–´ ì •ë³´ (ì˜ˆ : ë¡œë§ˆì 1, 2, 3, 4)
+    private String rank;			//ë­í¬ ì •ë³´ (ì˜ˆ : ë¸Œë¡ ì¦ˆ, ì‹¤ë²„, ê³¨ë“œ)
     private String summonerId;
-    private String summonerName;	//¼ÒÈ¯»ç ´Ğ³×ÀÓ
-    private int leaguePoints;		//¸®±×Æ÷ÀÎÆ®
-    private int wins;				//1µî È½¼ö 
-    private int losses;				//2µî ÀÌÇÏ È½¼ö
+    private String summonerName;	//ì†Œí™˜ì‚¬ ë‹‰ë„¤ì„
+    private int leaguePoints;		//ë¦¬ê·¸í¬ì¸íŠ¸
+    private int wins;				//1ë“± íšŸìˆ˜ 
+    private int losses;				//2ë“± ì´í•˜ íšŸìˆ˜
     private boolean veteran;
     private boolean inactive;
     private boolean freshBlood;

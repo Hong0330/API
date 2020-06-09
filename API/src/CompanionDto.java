@@ -1,10 +1,10 @@
 
-public class CompanionDto {	//²¿¸¶ Àü¼³ÀÌ Á¤º¸
+public class CompanionDto {	//ê¼¬ë§ˆ ì „ì„¤ì´ ì •ë³´
 	private String content_ID;
     private int skin_ID;
-    private String species;		//²¿¸¶ Àü¼³ÀÌ ÀÌ¸§
+    private String species;		//ê¼¬ë§ˆ ì „ì„¤ì´ ì´ë¦„
 
-    //»ı¼ºÀÚ
+    //ìƒì„±ì
     public CompanionDto() {
         super();
     }

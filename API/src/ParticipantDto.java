@@ -3,18 +3,18 @@ import java.util.List;
 
 public class ParticipantDto {
 	private CompanionDto companion;
-    private int gold_left;				//³²Àº °ñµå
-    private int last_round;				//¸¶Áö¸·±îÁö »ì¾Æ³²Àº ¶ó¿îµå
-    private int level;					//·¹º§ 
+    private int gold_left;				//ë‚¨ì€ê³¨ë“œ
+    private int last_round;				//ë§ˆì§€ë§‰ìœ¼ë¡œ ìƒì¡´í•œ ë¼ìš´ë“œ
+    private int level;					//ë ˆë²¨
     private int placement;			
     private int players_eliminated;
     private String puuid;	
-    private float time_eliminated;		//»ıÁ¸ ½Ã°£
-    private int total_damage_to_players;//Âü¿©ÀÚµé¿¡°Ô °ø°İÇÑ µ¥¹ÌÁö ·®
-    private ArrayList<TraitDto> traits = new ArrayList<TraitDto>();	//½Ã³ÊÁö
-    private ArrayList<UnitDto> units = new ArrayList<UnitDto>();	//À¯´Ö
+    private float time_eliminated;		//ìƒì¡´ì‹œê°„
+    private int total_damage_to_players;//ë‹¤ë¥¸ ì°¸ì—¬ìì—ê²Œ ì¤€ ì´ ë°ë¯¸ì§€
+    private ArrayList<TraitDto> traits = new ArrayList<TraitDto>();	//ì‹œë„ˆì§€
+    private ArrayList<UnitDto> units = new ArrayList<UnitDto>();	//ìœ ë‹›
 
-    //»ı¼ºÀÚ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public ParticipantDto() {
         super();
     }

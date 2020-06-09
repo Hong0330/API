@@ -3,7 +3,7 @@ public class MatchDto {
 	private MetadataDto matadata;
     private InfoDto info;
 
-    //»ı¼ºÀÚ
+    //ìƒì„±ì
     public MatchDto() {
         super();
     }

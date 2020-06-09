@@ -1,9 +1,9 @@
 
 import org.json.simple.*;
-import org.json.simple.JSONObject; //JSON°´Ã¼¸¦ ¸¸µå´Âµ¥ »ç¿ë
+import org.json.simple.JSONObject; //JSONï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½
 import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser; //JSON°´Ã¼¸¦ ÆÄ½ÌÇØ¿À´Âµ¥ »ç¿ë
-import org.json.simple.parser.ParseException; //¿¹¿ÜÃ³¸®
+import org.json.simple.parser.JSONParser; //JSONï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ä½ï¿½ï¿½Ø¿ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½
+import org.json.simple.parser.ParseException; //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,21 +25,21 @@ public class Request extends Thread{
     String URL_04 = "https://asia.api.riotgames.com/tft/match/v1/matches/";
     String URL_05 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/";
     
-    SummonerDTO summonerDTO = new SummonerDTO();//¼ÒÈ¯»ç Á¤º¸
-    LeagueEntryDTO leagueEntryDTO = new LeagueEntryDTO();//Æ¼¾î Á¤º¸
+    SummonerDTO summonerDTO = new SummonerDTO();//ì†Œí™˜ì‚¬ ê¸°ë³¸ì •ë³´
+    LeagueEntryDTO leagueEntryDTO = new LeagueEntryDTO();//í‹°ì–´ ì •ë³´
     
     ArrayList<JSONObject> matchObject = new ArrayList<JSONObject>();
-    ArrayList<MatchDto> matchDto = new ArrayList<MatchDto>();// ¸ÅÄ¡ ¼¼ºÎ Á¤º¸
-    ArrayList<String> matchList = new ArrayList<String>();	//¸ÅÄ¡ ¸®½ºÆ®
+    ArrayList<MatchDto> matchDto = new ArrayList<MatchDto>();// ë§¤ì¹˜ì •ë³´
+    ArrayList<String> matchList = new ArrayList<String>();	// ë§¤ì¹˜ë¦¬ìŠ¤íŠ¸
     
-    ArrayList<ArrayList<String>> participantList = new ArrayList<ArrayList<String>>(); //Âü¿©ÀÚ ¼ÒÈ¯»ç Á¤º¸
+    ArrayList<ArrayList<String>> participantList = new ArrayList<ArrayList<String>>(); //ì°¸ì—¬ì ë‹‰ë„¤ì„
     ArrayList<String> nameTmp = new  ArrayList<String>();
     int index = 1;
     
    
     public boolean callSummonerDTO(String name) throws ParseException {
     	try {   		
-    		name = URLEncoder.encode(name, "UTF-8");  //ÇÑ±ÛÀ» ÀÎÄÚµùÇÏ¿© ÀÎ½ÄÇÏ°Ô ÇÔ
+    		name = URLEncoder.encode(name, "UTF-8");  //ì¸ì½”ë”©
     		
     		URL url = new URL(URL_01 + name + "?api_key=" + API_key);
             System.out.println(url);
@@ -67,12 +67,12 @@ public class Request extends Thread{
             }
             else {
                 // Error handling code goes here
-                System.out.println("¿À·ùÄÚµå ¹ß»ı");
+                System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 return false;
             }
     	}
     	catch(IOException e) {
-    		System.out.println("¿À·ù¹ß»ı");
+    		System.out.println("ì˜¤ë¥˜ë°œìƒ");
             e.printStackTrace();
             return false;
     	}
@@ -96,11 +96,11 @@ public class Request extends Thread{
                     buffer.append(str);
                 }
                 String receiveMsg = buffer.toString();
-                receiveMsg = receiveMsg.replaceAll("[\\[\\]]", ""); //´ë°ıÈ£ »èÁ¦
+                receiveMsg = receiveMsg.replaceAll("[\\[\\]]", ""); //ëŒ€ê´„í˜¸ ì œê±°
                 JSONParser jsonParser = new JSONParser();
                 
-                if("".equals(receiveMsg)) { // TFT¸¦ ÇÑ¹øµµ ÇÃ·¹ÀÌ ÇÏÁö ¾ÊÀ» ¶§ 
-                	System.out.println("ÇÃ·¹ÀÌ ³»¿ª ¾øÀ½");
+                if("".equals(receiveMsg)) { // TFTì „ì  ê¸°ë¡ì´ ì—†ì„ë•Œ
+                	System.out.println("ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 	return false;
                 }               
                 
@@ -113,12 +113,12 @@ public class Request extends Thread{
             }
             else {
                 // Error handling code goes here
-                System.out.println("¿À·ùÄÚµå ¹ß»ı");
+                System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 return false;
             }
     	}
     	catch(IOException e) {
-    		System.out.println("¿À·ù¹ß»ı");
+    		System.out.println("ì˜¤ë¥˜ë°œìƒ");
             e.printStackTrace();
             return false;
     	}
@@ -156,12 +156,12 @@ public class Request extends Thread{
             }
             else {
                 // Error handling code goes here
-                System.out.println("¿À·ùÄÚµå ¹ß»ı");
+                System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 return false;
             }
     	}
     	catch(IOException e) {
-    		System.out.println("¿À·ù¹ß»ı");
+    		System.out.println("ì˜¤ë¥˜ë°œìƒ");
             e.printStackTrace();
             return false;
     	}
@@ -193,10 +193,10 @@ public class Request extends Thread{
                 setMatch(jsonObject);
                 System.out.println("match : " + matchDto.get(matchDto.size()-1).getMetadata().getMatch_id());
                 
-                //Âü¿©ÀÚÀÇ puuid·Î ´Ğ³×ÀÓÀ» ÀúÀå
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ puuidï¿½ï¿½ ï¿½Ğ³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 for(int i = 0 ; i < matchDto.get(matchDto.size()-1).getMetadata().getParticipants().size() ; i++) {
                 	if(callParticipantList(matchDto.get(matchDto.size()-1).getMetadata().getParticipants().get(i), matchDto.size()) == false) {
-                		System.out.println("¿À·ù¹ß»ı");
+                		System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 		return false;
                 	}
                 }
@@ -204,12 +204,12 @@ public class Request extends Thread{
             }
             else {
                 // Error handling code goes here
-                System.out.println("¿À·ùÄÚµå ¹ß»ı");
+                System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 return false;
             }
     	}
     	catch(IOException e) {
-    		System.out.println("¿À·ù¹ß»ı");
+    		System.out.println("ì˜¤ë¥˜ë°œìƒ");
             e.printStackTrace();
             return false;
     	}
@@ -243,12 +243,12 @@ public class Request extends Thread{
             }
             else {
                 // Error handling code goes here
-                System.out.println("¿À·ùÄÚµå ¹ß»ı");
+                System.out.println("ì˜¤ë¥˜ë°œìƒ");
                 return false;
             }
     	}
     	catch(IOException e) {
-    		System.out.println("¿À·ù¹ß»ı");
+    		System.out.println("ì˜¤ë¥˜ë°œìƒ");
             e.printStackTrace();
             
             return false;
@@ -292,7 +292,7 @@ public class Request extends Thread{
     public void setMatch(JSONObject jsonObject) throws ParseException {
     	MatchDto tmp = new MatchDto();
     	
-    	//metadata ÆÄ½Ì
+    	//metadata íŒŒì‹±
     	MetadataDto metadataTmp = new MetadataDto();
     	JSONObject metadataObject = (JSONObject) jsonObject.get("metadata");
     	String data_version = (String) metadataObject.get("data_version");
@@ -302,14 +302,14 @@ public class Request extends Thread{
     	metadataTmp.setMatch_id(match_id);
     	metadataTmp.setParticipants(participant);
     	tmp.setMetadata(metadataTmp);
-    	//metadata ÆÄ½Ì ¿Ï·á
+    	//metadata íŒŒì‹±ì™„ë£Œ
     	
-    	//info ÆÄ½Ì
+    	//info íŒŒì‹±
     	InfoDto infoTmp = new InfoDto();
     	JSONObject infoObject = (JSONObject) jsonObject.get("info");
     	long game_datetime = (long) infoObject.get("game_datetime");
     	double game_length = (double) infoObject.get("game_length");
-    	String game_variation = (String)infoObject.get("game_variation"); // ÀºÇÏ°è Á¤º¸ 
+    	String game_variation = (String)infoObject.get("game_variation"); // ì€í•˜ê³„ ì •ë³´
     	String game_version = (String) infoObject.get("game_version");   
     	int queue_id = ((Long)infoObject.get("queue_id")).intValue();
     	int tft_set_number = ((Long)infoObject.get("tft_set_number")).intValue();
@@ -321,8 +321,8 @@ public class Request extends Thread{
     	infoTmp.setQueue_id(queue_id);
     	infoTmp.setTft_set_number(tft_set_number);
     	
-    	//participantsÆÄ½Ì	
-    	ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>(); //ÃÖÁ¾ÀûÀ¸·Î ÀúÀåÇÒ ¸®½ºÆ®
+    	//participantsíŒŒì‹±	
+    	ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>(); //ìµœì¢… ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
     	
     	ArrayList<JSONObject> participantsTmp = (ArrayList<JSONObject>) infoObject.get("participants");
     	for(int i = 0 ; i < participantsTmp.size() ; i++) {		
@@ -331,8 +331,8 @@ public class Request extends Thread{
     		JSONObject jsonTmp = participantsTmp.get(i);
     		
     		
-    		// companionÆÄ½Ì
-    		CompanionDto companion = new CompanionDto(); //ÃÖÁ¾ ÀúÀå 
+    		// companioníŒŒì‹±
+    		CompanionDto companion = new CompanionDto(); //ìµœì¢… ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
     		
     		JSONObject companionTmp = (JSONObject) jsonTmp.get("companion");
 
@@ -363,8 +363,8 @@ public class Request extends Thread{
     		p.setTime_eliminated((float)time_eliminated);
     		p.setTotal_damage_to_players(total_damage_to_players);
     		
-    		// ½Ã³ÊÁö ÆÄ½Ì
-    		ArrayList<TraitDto> traits = new ArrayList<TraitDto>(); //ÃÖÁ¾ ÀúÀå
+    		// ì‹œë„ˆì§€ íŒŒì‹±
+    		ArrayList<TraitDto> traits = new ArrayList<TraitDto>(); //ìµœì¢… ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
     		
     		ArrayList<JSONObject> traitsTmp = (ArrayList<JSONObject>) jsonTmp.get("traits");
     		for(int j = 0 ; j < traitsTmp.size() ; j++) {
@@ -388,8 +388,8 @@ public class Request extends Thread{
     			
     			traits.add(t);
     		}
-    		//À¯´Ö ÆÄ½Ì
-    		ArrayList<UnitDto> units = new ArrayList<UnitDto>(); //ÃÖÁ¾ ÀúÀå
+    		//ìœ ë‹› íŒŒì‹±
+    		ArrayList<UnitDto> units = new ArrayList<UnitDto>(); //ìµœì¢… ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
     		
     		ArrayList<JSONObject> unitsTmp = (ArrayList<JSONObject>) jsonTmp.get("units");
     		
@@ -468,12 +468,12 @@ public class Request extends Thread{
     }
     
     public void reset() {
-    	summonerDTO = new SummonerDTO();//¼ÒÈ¯»ç Á¤º¸
-        leagueEntryDTO = new LeagueEntryDTO();//Æ¼¾î Á¤º¸
+    	summonerDTO = new SummonerDTO();
+        leagueEntryDTO = new LeagueEntryDTO();
         
         matchObject = new ArrayList<JSONObject>();
-        matchDto = new ArrayList<MatchDto>();// ¸ÅÄ¡ ¼¼ºÎ Á¤º¸
-        matchList = new ArrayList<String>();	//¸ÅÄ¡ ¸®½ºÆ®
+        matchDto = new ArrayList<MatchDto>();
+        matchList = new ArrayList<String>();	
         
         participantList = new ArrayList<ArrayList<String>>();
         nameTmp = new  ArrayList<String>();

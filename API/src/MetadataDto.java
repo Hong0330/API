@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class MetadataDto {
 	private String data_version;
     private String match_id;
-    private ArrayList<String> participants = new ArrayList<String>();	//Âü¿©ÀÚµéÀÇ puuid, ÀÌ ¸®½ºÆ®¸¦ È°¿ëÇÏ¿© API_05¸¦ È£ÃâÇÏ¿© ´Ğ³×ÀÓÀ» Ã£À½
+    private ArrayList<String> participants = new ArrayList<String>();	//ì°¸ì—¬ìë“¤ì˜ puuid, ì´ ë¦¬ìŠ¤íŠ¸ë¥¼ í™œìš©í•˜ì—¬ API_05ë¥¼ í˜¸ì¶œí•˜ì—¬ ë‹‰ë„¤ì„ì„ ì°¾ìŒ
 
-    //»ı¼ºÀÚ
+    //ìƒì„±ì
     public MetadataDto() {
         super();
     }

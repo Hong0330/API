@@ -8,7 +8,7 @@ public class main {
 		Request r = new Request();
 		sql sql = new sql();
 		try {
-			//JDBC µå¶óÀÌ¹ö ·Îµå
+			//JDBC ë“œë¼ì´ë²„ ë¡œë”©
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			
@@ -34,7 +34,7 @@ public class main {
 			System.out.println(sql.deleteSummoner_info("test"));
 			
 			
-			if(r.callSummonerDTO("·ÑÃ³À½ÇÏ´ÂÈŞ¸Õ")) {
+			if(r.callSummonerDTO("ë¡¤ì²˜ìŒí•˜ëŠ”íœ´ë¨¼")) {
 				if(r.callLeagueEntryDTO(r.summonerDTO.getId())) {
 					if(r.callMatchList(r.summonerDTO.getPuuid())) {
 						
@@ -44,7 +44,7 @@ public class main {
 						
 						/*
 						sql.insertSummoner_info("test", "test", r.summonerDTO.getName());
-						//i = ¸ÅÄ¡¹øÈ£ÀÎµ¦½º, j = À¯ÀúÀÎµ¦½º
+						//i = ë§¤ì¹˜ ì¸ë±ìŠ¤, j = ì°¸ì—¬ì ì¸ë±ìŠ¤
 						for(int i = 0; i < r.matchList.size() ; i++) {
 							sql.insertMatch_info(r.summonerDTO.getName(), r.matchList.get(i), r.matchDto.get(i).getInfo().getGame_length(), r.matchDto.get(i).getInfo().getGame_variation());
 							for(int j = 0 ;j < r.matchDto.get(i).getInfo().getParticipants().size(); j++) {
@@ -88,12 +88,12 @@ public class main {
 					}
 				}
 			}
-			else { //¹®Á¦ ¹ß»ı
-				//¹®Á¦ Ã³¸®
+			else { //ë¬¸ì œë°œìƒì‹œ
+				//ë¬¸ì œì²˜ë¦¬
 				
 			}
 			
-			System.out.println("DB¾÷µ¥ÀÌÆ® ¼º°ø");
+			System.out.println("DBì—…ë°ì´íŠ¸ ì™„ë£Œ");
 			
 			
 		} catch (ParseException e) {

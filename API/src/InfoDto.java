@@ -2,14 +2,12 @@ import java.util.ArrayList;
 
 public class InfoDto {
 	private long game_datetime;
-    private float game_length;		//°ÔÀÓ ÁøÇà ½Ã°£
-    private String game_variation;	//ÀºÇÏ°è ±¸¼º (¿¹ : º¸¹°Ã¢°í , ´ÏÄÚÀÇ ¼¼°è)
+    private float game_length;		//ê²Œì„ ì§„í–‰ ì‹œê°„
+    private String game_variation;	//ì€í•˜ê³„ êµ¬ì„± (ì˜ˆ : ë³´ë¬¼ì°½ê³  , ë‹ˆì½”ì˜ ì„¸ê³„)
     private String game_version;
-    private ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>();	//Âü¿©ÀÚ Á¤º¸ 
+    private ArrayList<ParticipantDto> participants = new ArrayList<ParticipantDto>();	//ì°¸ì—¬ì ì •ë³´ 
     private int queue_id;
     private int tft_set_number;
-
-    //»ı¼ºÀÚ
     public InfoDto() {
         super();
     }
