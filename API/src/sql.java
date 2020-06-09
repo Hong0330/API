@@ -17,11 +17,18 @@ public class sql {
 	String user_info = "insert into user_info(match_id, user_name, gold_left, last_round, level, player_eliminated) values(?, ?, ?, ?, ?, ?)";
 	String trait_info = "insert into trait_info(match_id, user_name, trait_no, trait_name, num_units, tier_current) values(?, ?, ?, ?, ?, ?)";
 	String unit_info = "insert into unit_info(match_id, user_name, unit_no, character_id, tier, item_1, item_2, item_3) values(?, ?, ?, ?, ?, ?, ?, ?)";
+	
 	String selectSummoner = "select * from summoner_info where ID=?";
 	String selectMatch = "select * from match_info where TFT_name=? and match_id=?";
 	String selectUser = "select * from user_info where match_id=? and user_name=?";
 	String selectTrait = "select * from trait_info where match_id=? and user_name=? and trait_no=?";
 	String selectUnit = "select * from unit_info where match_id=? and user_name=? and unit_no=?";
+	
+	String deleteSummoner = "delete from summoner_info where ID=?";
+	String deleteMatch = "delete from match_info where TFT_name=? and match_id=?";
+	String deleteUser = "delete from user_info where match_id=?";
+	String deleteTrait = "delete from trait_info where match_id=?";
+	String deleteUnit = "delete from unit_info where match_id=?";
 	
 	public void connect() {
 		//目池记 积己
@@ -134,6 +141,9 @@ public class sql {
 				tmp_id = rs.getString("ID");
 				tmp_pw = rs.getString("password");
 			}
+			if(tmp_id == null) { //绝阑版快
+				return "LOGINFAIL"; 
+			}
 			
 			if(tmp_id.equals(id) && tmp_pw.equals(pw)) {
 				rs.close();
@@ -168,6 +178,7 @@ public class sql {
 				tmp_game_variation = rs.getString("game_variation");
 			}
 			System.out.println("match_id : " + tmp_match_id + " game_length : " + tmp_game_length + " game_variation : " + tmp_game_variation);
+			rs.close();
 			return "己傍";
 
 		} catch (SQLException e) {
@@ -200,6 +211,7 @@ public class sql {
 				tmp_player_eliminated = rs.getInt("player_eliminated");
 			}
 			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " gold_left : " + tmp_gold_left + " last_round : " + tmp_last_round + " level : " + tmp_level + " player_eliminated : " + tmp_player_eliminated );
+			rs.close();
 			return "己傍";
 
 		} catch (SQLException e) {
@@ -233,11 +245,12 @@ public class sql {
 				tmp_tier_current = rs.getInt("tier_current");
 			}
 			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " trait_no : " + tmp_trait_no + " trait_name : " + tmp_trait_name + " num_units : " + tmp_num_units + " tier_current : " + tmp_tier_current );
+			rs.close();
 			return "己傍";
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return "USERFAIL";
+			return "TRAITFAIL";
 		}
 	}
 	
@@ -270,13 +283,107 @@ public class sql {
 				tmp_item_3 = rs.getInt("item_3");
 			}
 			System.out.println("match_id : " + tmp_match_id + " user_name : " + tmp_user_name + " unit_no : " + tmp_unit_no + " character_id : " + tmp_character_id + " tier : " + tmp_tier + " item_1 : " + tmp_item_1 + " item_2 : " + tmp_item_2 + " item_3 : " + tmp_item_3);
+			rs.close();
 			return "己傍";
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return "USERFAIL";
+			return "UNITFAIL";
 		}
 	}
+	
+	public String deleteSummoner_info(String id) {
+		try {
+			pstatement = con.prepareStatement(deleteSummoner);
+			pstatement.setString(1, id);
+			
+			if(pstatement.executeUpdate() > 0) {
+				return "己傍";
+			}
+			else {
+				return "DELETESUMMONERFAIL";
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return "DELETESUMMONERFAIL";
+		}
+		
+	}
+	
+	public String deleteMatch_info(String name, String match_id) {
+		try {
+			pstatement = con.prepareStatement(deleteMatch);
+			pstatement.setString(1, name);
+			pstatement.setString(2, match_id);
+			
+			if(pstatement.executeUpdate() > 0) {
+				return "己傍";
+			}
+			else {
+				return "DELETEMATCHFAIL";
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return "DELETEMATCHFAIL";
+		}
+		
+	}
+	
+	public String deleteUser_info(String match_id) {
+		try {
+			pstatement = con.prepareStatement(deleteUser);
+			pstatement.setString(1, match_id);
+			
+			if(pstatement.executeUpdate() > 0) {
+				return "己傍";
+			}
+			else {
+				return "DELETEUSERFAIL";
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return "DELETEUSERFAIL";
+		}
+		
+	}
+	
+	public String deleteTrait_info(String match_id) {
+		try {
+			pstatement = con.prepareStatement(deleteTrait);
+			pstatement.setString(1, match_id);
+			
+			if(pstatement.executeUpdate() > 0) {
+				return "己傍";
+			}
+			else {
+				return "DELETETRAITFAIL";
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return "DELETETRAITFAIL";
+		}
+		
+	}
+	
+	public String deleteUnit_info(String match_id) {
+		try {
+			pstatement = con.prepareStatement(deleteUnit);
+			pstatement.setString(1, match_id);
+			
+			if(pstatement.executeUpdate() > 0) {
+				return "己傍";
+			}
+			else {
+				return "DELETEUNITFAIL";
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return "DELETEUNITFAIL";
+		}
+		
+	}
+	
+	
 	
 	public void closeConnect() {
 		try {

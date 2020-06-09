@@ -27,7 +27,11 @@ public class main {
 				System.out.println(test);
 			}
 			
-			
+			System.out.println(sql.deleteUnit_info("test"));
+			System.out.println(sql.deleteTrait_info("test"));
+			System.out.println(sql.deleteUser_info("test"));
+			System.out.println(sql.deleteMatch_info("test", "test"));
+			System.out.println(sql.deleteSummoner_info("test"));
 			
 			
 			if(r.callSummonerDTO("롤처음하는휴먼")) {
